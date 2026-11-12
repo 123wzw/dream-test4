@@ -7,7 +7,7 @@ MAX_ATTACK_UP_STACKS = 3
 
 def apply_attack_up(target: Combatant, turns: int = 2) -> None:
     """施加一层攻击增益。"""
-    target.attack_up_stacks += 1
+    target.attack_up_stacks = min(target.attack_up_stacks + 1, MAX_ATTACK_UP_STACKS)
     target.attack_up_turns = turns
 
 

@@ -7,7 +7,8 @@ from arena.model import Combatant
 def turn_order(combatants: list[Combatant]) -> list[Combatant]:
     """按速度排序，存活者参与。"""
     alive = [c for c in combatants if c.alive]
-    return sorted(alive, key=lambda c: (-c.speed, c.name))
+    # 稳定排序：同速保持加入战斗的先后顺序
+    return sorted(alive, key=lambda c: -c.speed)
 
 
 def run_battle(
